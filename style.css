@@ -609,38 +609,6 @@ nav a.active {
   font-weight: 300;
 }
 
-/* Photo strip below cards */
-.interests-photos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.interest-photo-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.interest-photo-card img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-
-.interest-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 500;
-  background: var(--pill-bg);
-  color: var(--green-dark);
-  padding: 0.2rem 0.65rem;
-  border-radius: 99px;
-  width: fit-content;
-}
-
 /* Hero interest pills */
 .hero-interests {
   display: flex;
@@ -789,7 +757,6 @@ footer {
   .certs-grid  { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .interests-grid { grid-template-columns: 1fr; }
-  .interests-photos { grid-template-columns: repeat(2, 1fr); }
 
   .timeline-item {
     grid-template-columns: 1fr;
