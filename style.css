@@ -609,6 +609,38 @@ nav a.active {
   font-weight: 300;
 }
 
+/* Photo strip */
+.interests-photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.interest-photo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.interest-photo-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.interest-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: var(--pill-bg);
+  color: var(--green-dark);
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
+  width: fit-content;
+}
+
 /* Hero interest pills */
 .hero-interests {
   display: flex;
