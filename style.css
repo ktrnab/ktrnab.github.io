@@ -95,14 +95,16 @@ nav a.active {
 }
 
 .hero-photo {
-  flex-shrink: 0;
-  width: 300px;
-  height: 400px;
+  flex: 0 0 28%;
+  width: 28%;
+  max-width: 260px;
+  height: auto;
+  aspect-ratio: 3/4;
   object-fit: cover;
   object-position: center top;
-  border-radius: 220px 220px 180px 180px;
+  border-radius: 120px 120px 80px 80px;
   border: 3px solid var(--pill-bg-dark);
-  box-shadow: 0 12px 40px rgba(42, 92, 39, 0.12);
+  box-shadow: 0 8px 28px rgba(42, 92, 39, 0.1);
 }
 
 .hero-eyebrow {
