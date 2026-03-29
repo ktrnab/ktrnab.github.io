@@ -88,34 +88,21 @@ nav a.active {
 
 .hero-inner {
   display: flex;
-  gap: 4rem;
-  max-width: 960px;
+  gap: 5rem;
+  max-width: 1000px;
   width: 100%;
   align-items: center;
 }
 
-.about-photo-placeholder {
+.hero-photo {
   flex-shrink: 0;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: var(--pill-bg);
-  border: 3px solid var(--pill-bg-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.4rem;
-  color: var(--green-dark);
-}
-
-.about-photo {
-  flex-shrink: 0;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+  width: 300px;
+  height: 400px;
   object-fit: cover;
+  object-position: center top;
+  border-radius: 220px 220px 180px 180px;
   border: 3px solid var(--pill-bg-dark);
+  box-shadow: 0 12px 40px rgba(42, 92, 39, 0.12);
 }
 
 .hero-eyebrow {
@@ -688,6 +675,11 @@ footer {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+  }
+
+  .hero-photo {
+    width: 220px;
+    height: 300px;
   }
 
   .hero-text h1 { font-size: 2.8rem; }
