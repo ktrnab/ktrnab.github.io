@@ -543,6 +543,11 @@ nav a.active {
   font-weight: 300;
 }
 
+.project-card p strong {
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
 .project-skills {
   display: flex;
   flex-wrap: wrap;
