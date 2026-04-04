@@ -548,6 +548,20 @@ nav a.active {
   font-weight: 600;
 }
 
+.case-study-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--green-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.case-study-link:hover {
+  color: var(--green-dark);
+}
+
 .project-skills {
   display: flex;
   flex-wrap: wrap;
