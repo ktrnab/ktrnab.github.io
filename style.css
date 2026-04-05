@@ -740,6 +740,12 @@ footer {
   letter-spacing: 0.04em;
 }
 
+.footer-updated {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  opacity: 0.6;
+}
+
 /* ── SCROLL-TO-TOP ── */
 #scroll-top {
   position: fixed;
