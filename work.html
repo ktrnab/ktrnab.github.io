@@ -243,23 +243,23 @@
 
       <header class="case-header">
         <div class="case-meta">
-          <span class="case-tag">Analytics · Reporting · Excel</span>
-          <span class="case-year">2024</span>
+          <span class="case-tag">Analytics · Data Modelling · Excel</span>
+          <span class="case-year">2023</span>
         </div>
-        <h1>Internal Communications Channel Report</h1>
-        <p class="case-org">Meridian Insurance Group (Sample Project)</p>
+        <h1>EV Charging Network — Operational Intelligence Report</h1>
+        <p class="case-org">GreenGrid EV Solutions (Sample Project)</p>
         <div class="case-role-strip">
           <div class="role-item">
             <span class="role-label">Role</span>
-            <span class="role-value">Internal Comms Analyst</span>
+            <span class="role-value">Data Analyst</span>
           </div>
           <div class="role-item">
             <span class="role-label">Scope</span>
-            <span class="role-value">Data modelling · Analysis · Reporting · Visualisation</span>
+            <span class="role-value">Data modelling · VLOOKUP · Pivot analysis · Dashboard</span>
           </div>
           <div class="role-item">
             <span class="role-label">Tools</span>
-            <span class="role-value">Excel · VLOOKUP · Pivot Charts</span>
+            <span class="role-value">Excel · VLOOKUP · Conditional Formatting · Pivot Charts</span>
           </div>
         </div>
       </header>
@@ -267,15 +267,15 @@
       <section class="case-section">
         <div class="section-label">Context</div>
         <div class="section-body">
-          <p>Internal communications teams are often producing content without a clear view of what is performing and what is not. Without a structured reporting process, it is difficult to justify resource allocation, demonstrate impact to leadership, or identify which channels and content types deserve more investment.</p>
-          <p>This sample project simulates a full-year performance review for a mid-size insurance company's internal comms function, covering three channels: an <strong>email newsletter</strong>, an <strong>intranet</strong>, and <strong>LinkedIn</strong>.</p>
+          <p>EV charging network operators often have raw session data but no structured framework to turn it into operational decisions. Without visibility into utilisation rates, grid load timing, and the cost impact of time-of-use electricity pricing, it is difficult to optimise asset deployment, justify infrastructure investment, or identify underperforming stations.</p>
+          <p>This sample project simulates a full-year operational review for a mid-size EV charging network across three station types — <strong>Level 2</strong>, <strong>DC Fast Chargers (DCFC)</strong>, and <strong>Level 1</strong> — applying the same analytical framework used in communications reporting to a green-tech operational context.</p>
         </div>
       </section>
 
       <section class="case-section">
         <div class="section-label">The Brief</div>
         <div class="section-body">
-          <p>Build a reusable, stakeholder-ready reporting workbook that tracks monthly channel performance against industry benchmarks, surfaces trends over time, and can be handed to a non-technical team for ongoing updates.</p>
+          <p>Build a reusable, stakeholder-ready workbook that tracks monthly station utilisation against targets, surfaces grid load patterns by hour of day, and models the cost impact of time-of-use electricity pricing — structured for handover to a non-technical operations team.</p>
         </div>
       </section>
 
@@ -285,21 +285,21 @@
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Dashboard &amp; Channel Comparison</h3>
-              <p>A side-by-side view of average engagement rate vs industry benchmark across all three channels, alongside a monthly trend line for the email newsletter showing where performance dipped below benchmark (summer) and recovered strongly in Q4. Green shading indicates above-benchmark periods; red indicates below.</p>
+              <h3>Operational Dashboard — Utilisation &amp; Duck Curve</h3>
+              <p>A two-chart executive view: a <strong>station utilisation vs target bar chart</strong> across all three charger types, and a <strong>duck curve</strong> showing hourly grid load throughout the day. The duck curve is colour-coded by time-of-use rate band — off-peak, mid-peak, and on-peak — making the cost implications of the 18:00–20:00 demand spike immediately visible. Five KPI callouts headline the dashboard: total energy delivered (188.5 MWh), total sessions, DCFC utilisation rate, peak load window, and estimated annual revenue.</p>
             </div>
             <div class="deliverable-screens">
-              <img src="assets/images/work/report-dashboard.png" alt="Dashboard showing channel comparison bar chart and email monthly trend line" class="screen single" />
+              <img src="assets/images/work/report-dashboard.png" alt="EV dashboard: station utilisation bar chart and hourly duck curve" class="screen single" />
             </div>
           </div>
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Raw Data Sheet with VLOOKUP</h3>
-              <p>36 rows of monthly campaign data across all channels. The <strong>Benchmark Eng. Rate</strong> column uses a VLOOKUP to pull the correct industry benchmark from a separate reference table based on the channel in column A. The <strong>vs Benchmark</strong> column calculates the delta, with conditional formatting applied to highlight over- and under-performance at a glance.</p>
+              <h3>Raw Data Sheet with Time-of-Use VLOOKUP</h3>
+              <p>36 rows of monthly session data across all station types. The <strong>Rate ($/kWh)</strong> column uses a VLOOKUP with approximate match (<code>TRUE</code>) to pull the correct electricity tariff from a separate Rate Table based on the session start hour — mapping Off-Peak ($0.082), Mid-Peak ($0.142), and On-Peak ($0.218) rates automatically. The <strong>vs Target</strong> column calculates the utilisation delta in percentage points, with <strong>conditional formatting</strong> applied to highlight over- and under-performance at a glance. A dedicated Revenue column multiplies sessions × avg kWh × the VLOOKUP rate, making cost-of-demand modelling formula-driven throughout.</p>
             </div>
             <div class="deliverable-screens">
-              <img src="assets/images/work/report-rawdata.png" alt="Raw data sheet with VLOOKUP benchmark column and conditional formatting" class="screen single" />
+              <img src="assets/images/work/report-rawdata.png" alt="Raw data sheet with VLOOKUP TOU rate lookup and conditional formatting" class="screen single" />
             </div>
           </div>
 
@@ -310,12 +310,11 @@
         <div class="section-label">My Contribution</div>
         <div class="section-body">
           <ul class="contribution-list">
-            <li>Designed a unified data model to track three channels with different engagement metrics in a single workbook</li>
-            <li>Built a VLOOKUP reference table mapping each channel to its industry benchmark, used across Raw Data and Channel Summary sheets</li>
-            <li>Created pivot-style channel summary with aggregated totals and average rates by channel</li>
-            <li>Applied conditional formatting to surface above/below benchmark performance without manual review</li>
-            <li>Produced a stakeholder-ready dashboard tab with KPI callouts and two chart types (bar and line)</li>
-            <li>Structured the workbook for handover: clearly labelled sheets, formula-driven cells, no manual overrides</li>
+            <li>Designed a unified data model mapping three station types — each with different power outputs, session lengths, and pricing exposure — into a single comparable workbook</li>
+            <li>Built a Time-of-Use Rate Table and VLOOKUP with <code>TRUE</code> approximate match to automatically apply tiered electricity pricing ($0.082 / $0.142 / $0.218 per kWh) based on session hour</li>
+            <li>Created a Duck Curve analysis using hourly aggregation to pinpoint the 18:00–20:00 on-peak demand window — the highest-cost load period for the network operator</li>
+            <li>Applied conditional formatting to surface above/below-target utilisation without manual review, and built a Station Specs lookup table mapping each charger type to its hardware constraints</li>
+            <li>Produced a stakeholder-ready dashboard with five KPI callouts, a utilisation bar chart, and a colour-coded load profile — structured for monthly update by a non-technical team</li>
           </ul>
         </div>
       </section>
@@ -323,9 +322,9 @@
       <section class="case-section">
         <div class="section-label">Result</div>
         <div class="section-body">
-          <p>A fully reusable reporting template that any communications team could update monthly with minimal effort. Key findings from the simulated data: email newsletter averaged <strong>51.2% open rate</strong> against a 47% benchmark, with a predictable summer dip and strong Q4 recovery. LinkedIn engagement averaged <strong>3.8%</strong> against a 3.5% benchmark. The workbook structure makes it straightforward to extend to additional channels or time periods.</p>
+          <p>A fully reusable operational intelligence template demonstrating that the same analytical toolkit — VLOOKUP, conditional formatting, pivot-style aggregation — applies equally to green-tech infrastructure as it does to communications reporting. Key findings from the modelled data: DC Fast Chargers averaged <strong>66% utilisation</strong> against a 65% target; the duck curve confirmed <strong>67% of peak demand falls within the on-peak TOU window</strong>, carrying a direct cost premium of $0.136/kWh over off-peak rates. The workbook is structured to extend to additional station locations or pricing zones without structural changes.</p>
           <p style="margin-top:1rem;">
-            <a href="assets/meridian-comms-report-2024.xlsx" class="download-link" download>Download the Excel file ↓</a>
+            <a href="assets/meridian-ev-charging-report-2023.xlsx" class="download-link" download>Download the Excel file ↓</a>
           </p>
         </div>
       </section>
