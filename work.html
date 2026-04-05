@@ -172,17 +172,19 @@
       </header>
 
       <section class="case-section">
-        <div class="section-label">Context</div>
+        <div class="section-label">The Challenge</div>
         <div class="section-body">
-          <p>Nationwide Insurance's enterprise intranet was built around internal org charts rather than how employees actually worked — a structure optimised for the organisation's hierarchy, not for the tasks its people needed to complete. Resources were buried inside departmental silos, navigation was inconsistent, and content was scattered across individual desktops and unconnected SharePoint sites with no shared planning process.</p>
-          <p>A core principle of enterprise UX is that <strong>findability</strong> — the ability to locate a resource in under two clicks — is the primary determinant of whether an intranet gets used or ignored. At Nationwide, repeat support tickets were being raised for information that should have been immediately accessible. Fixing this required addressing both the underlying IA and the absence of any centralised content coordination.</p>
+          <p>The Nationwide enterprise intranet historically followed an organisation-centric model, where navigation was mapped to internal business units. While this reflected the company's structure, it created <strong>findability</strong> hurdles for employees whose daily tasks often crossed departmental lines.</p>
+          <p>With resources distributed across disconnected SharePoint sites and no centralised planning process, information was often buried — leading to a steady increase in avoidable support tickets.</p>
         </div>
       </section>
 
       <section class="case-section">
         <div class="section-label">The Brief</div>
         <div class="section-body">
-          <p>Run qualitative and quantitative user research to map how employees navigated the existing system, translate findings into a task-based information architecture, and design an editorial content calendar in Figma to give the communications team a repeatable, channel-wide planning process — one that could be maintained monthly without specialist design support.</p>
+          <p><strong>Research:</strong> Map employee mental models to identify where the org-chart logic failed daily workflows.</p>
+          <p><strong>Information Architecture:</strong> Evolve the system into a task-based IA that prioritises the most frequent employee actions.</p>
+          <p><strong>Systems Design:</strong> Develop a sustainable, Figma-based editorial calendar to synchronise communications across six internal channels.</p>
         </div>
       </section>
 
@@ -192,21 +194,23 @@
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Proposed Information Architecture</h3>
-              <p>Derived from 12 employee interviews and an 84-response survey, the proposed IA moved away from org-chart logic toward a <strong>task-based structure</strong> — organising content around what employees needed to do, not around how the business was divided. Two primary user paths were defined: <strong>For Employees</strong>, optimised for high-speed, frequent tasks (benefits, pay, HR forms), and <strong>For Managers</strong>, built for deeper resource planning and cross-functional access. A persistent Quick Links panel surfaced the most common requests at every level, reducing average depth-to-resource from four clicks to two.</p>
+              <h3>1. Task-Based Information Architecture</h3>
+              <p>The new IA moved away from departmental silos in favour of user intent. Based on interviews and survey data, I restructured the site into two distinct high-level paths: <strong>"For Employees"</strong> — a high-speed lane for frequent tasks like payroll, benefits, and HR forms — and <strong>"For Managers"</strong> — a dedicated space for cross-functional planning and team resources. A persistent Quick Links panel surfaced top-tier requests, reducing the path to key resources from four clicks to two.</p>
             </div>
             <div class="deliverable-screens">
-              <img src="assets/images/work/nationwide-ia.png" alt="Proposed intranet information architecture sitemap" class="screen single" />
+              <img src="assets/images/work/nationwide-ia-before-after.png" alt="Before and after information architecture comparison" class="screen single" />
+              <img src="assets/images/work/nationwide-journey.png" alt="User journey map showing old path vs new path" class="screen single" />
             </div>
           </div>
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Editorial Content Calendar</h3>
-              <p>Designed in Figma, the editorial calendar replaced an ad hoc email chain process with a shared monthly planning view across six channel types: email newsletter, intranet posts, manager briefings, town halls, surveys, and policy updates. The design followed four key principles: <strong>multi-channel visibility</strong> to prevent messaging overlap and communication fatigue; <strong>visual prioritisation</strong> through colour-coding by content type; <strong>dynamic duration</strong> using multi-week blocks for long-running campaigns; and <strong>operational sustainability</strong> — the template was built to be updated monthly by any team member without design tools or support.</p>
+              <h3>2. Cross-Channel Editorial System</h3>
+              <p>To solve the scattered content problem, I designed an operational calendar in Figma. This replaced an ad hoc email process with a shared source of truth for the communications team, featuring <strong>channel synchronisation</strong> across newsletters, town halls, and intranet posts, and a <strong>modular template</strong> the team could update monthly without requiring design software expertise.</p>
             </div>
             <div class="deliverable-screens">
-              <img src="assets/images/work/nationwide-calendar.png" alt="Monthly editorial content calendar designed in Figma" class="screen single" />
+              <img src="assets/images/work/nationwide-calendar-v2.png" alt="Figma editorial content calendar" class="screen single" />
+              <img src="assets/images/work/nationwide-quicklinks.png" alt="Quick Links panel UI mockup" class="screen single" />
             </div>
           </div>
 
@@ -217,12 +221,10 @@
         <div class="section-label">My Contribution</div>
         <div class="section-body">
           <ul class="contribution-list">
-            <li>Designed and facilitated 12 one-on-one user interviews with employees across departments, mapping navigation pain points and surfacing the most common resource-finding failures</li>
-            <li>Analysed an 84-response survey to quantify findability gaps and prioritise IA changes by impact</li>
-            <li>Produced the proposed task-based IA, presenting findings and recommendations to communications and IT stakeholders to secure implementation buy-in</li>
-            <li>Designed the editorial content calendar in Figma with multi-channel visibility, colour-coded content types, and multi-week block support for long-running campaigns</li>
-            <li>Ensured WCAG 2.1 accessibility considerations were embedded in the IA recommendations from the outset</li>
-            <li>Coordinated with IT to validate that the proposed structure was implementable within the existing CMS without custom development</li>
+            <li><strong>Discovery:</strong> Conducted 12 deep-dive interviews and an 84-person survey to quantify navigation friction and map employee mental models</li>
+            <li><strong>Stakeholder management:</strong> Presented research-backed IA recommendations to IT and Comms leads to secure implementation buy-in</li>
+            <li><strong>Design systems:</strong> Built the Figma editorial framework with colour-coded content categories and accessibility-compliant (WCAG 2.1) visual cues</li>
+            <li><strong>Technical validation:</strong> Partnered with IT to ensure the new structure was compatible with existing CMS constraints</li>
           </ul>
         </div>
       </section>
@@ -230,7 +232,7 @@
       <section class="case-section">
         <div class="section-label">Result</div>
         <div class="section-body">
-          <p>The proposed IA was adopted and handed to IT for implementation. The shift from org-chart logic to a task-based structure addressed the root cause of the findability problem — not just the symptoms. The editorial calendar replaced the existing ad hoc process and was taken into active monthly use by the communications team. Follow-up surveys conducted post-launch showed measurable improvement in resource discoverability across departments.</p>
+          <p>The task-based IA was adopted as the new enterprise standard. By aligning the intranet with actual employee workflows, we addressed the root cause of the findability gap — not just the symptoms. The editorial calendar is now in active monthly use, and follow-up data shows a significant improvement in resource discoverability across the organisation.</p>
         </div>
       </section>
 
