@@ -6,6 +6,29 @@ main {
   padding: 4rem 2rem 6rem;
 }
 
+/* Page intro */
+.work-intro {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 3rem;
+}
+
+.work-intro-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--green-dark);
+  margin-bottom: 0.6rem;
+}
+
+.work-intro p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 560px;
+}
+
 /* Case study card */
 .case-study {
   background: var(--surface2);
