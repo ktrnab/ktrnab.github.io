@@ -267,15 +267,15 @@
       <section class="case-section">
         <div class="section-label">Context</div>
         <div class="section-body">
-          <p>This analytical framework was developed as part of a student consulting engagement with <strong>BayWa Mobility Solutions</strong>, Germany's leading DC fast-charging infrastructure provider — 500+ locations, €113M revenue, and responsible for 35% of all EnBW DC charging points installed nationwide. Understanding operational performance at the station level was central to building credible, data-backed strategic recommendations for the client.</p>
-          <p>EV charging operators often have raw session data but no structured framework to turn it into decisions. Without visibility into utilisation rates, grid load timing, and the cost impact of time-of-use electricity pricing, it is difficult to optimise asset deployment or identify underperforming stations. The workbook below models a full-year operational review across three station types — <strong>Level 2</strong>, <strong>DC Fast Chargers (DCFC)</strong>, and <strong>Level 1</strong>.</p>
+          <p>This project was developed as part of a student consulting engagement for <strong>BayWa Mobility Solutions</strong>, a key player in Germany's EV transition managing 500+ charging locations and a significant share of the country's DC fast-charging infrastructure. My goal was to support the operations team by turning raw charging logs into a decision-support tool.</p>
+          <p>EV operators often have vast amounts of session data but lack a structured way to visualise daily grid impacts or the cost of energy at the moment of delivery. This workbook was designed as a reusable framework to evaluate performance across AC, <strong>DC Fast Charging (DCFC)</strong>, and <strong>High Power Charging (HPC)</strong> assets.</p>
         </div>
       </section>
 
       <section class="case-section">
         <div class="section-label">The Brief</div>
         <div class="section-body">
-          <p>Build a reusable, stakeholder-ready workbook that tracks monthly station utilisation against targets, surfaces grid load patterns by hour of day, and models the cost impact of time-of-use electricity pricing — structured for handover to a non-technical operations team.</p>
+          <p>Develop a prototype reporting workbook for a 6-month performance review. The tool needed to track station utilisation, pinpoint grid load spikes (the Duck Curve), and model the impact of Time-of-Use (TOU) pricing — all in a format that could be handed over to the permanent operations team.</p>
         </div>
       </section>
 
@@ -291,8 +291,8 @@
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Operational Dashboard — Utilisation &amp; Duck Curve</h3>
-              <p>A two-chart executive view: a <strong>station utilisation vs target bar chart</strong> across all three charger types, and a <strong>duck curve</strong> showing hourly grid load throughout the day. The duck curve is colour-coded by time-of-use rate band — off-peak, mid-peak, and on-peak — making the cost implications of the 18:00–20:00 demand spike immediately visible. Five KPI callouts headline the dashboard: total energy delivered (188.5 MWh), total sessions, DCFC utilisation rate, peak load window, and estimated annual revenue.</p>
+              <h3>Operational Dashboard — Load Profile &amp; Efficiency</h3>
+              <p>An executive view featuring a <strong>Utilisation vs. Target</strong> analysis and a Duck Curve chart. The curve visualises hourly load, colour-coded by electricity price bands (Off-Peak vs. On-Peak), making it clear how much energy is being sold during the most expensive grid windows.</p>
             </div>
             <div class="deliverable-screens">
               <img src="assets/images/work/report-dashboard.png" alt="EV dashboard: station utilisation bar chart and hourly duck curve" class="screen single" />
@@ -301,8 +301,8 @@
 
           <div class="deliverable">
             <div class="deliverable-info">
-              <h3>Raw Data Sheet with Time-of-Use VLOOKUP</h3>
-              <p>36 rows of monthly session data across all station types. The <strong>Rate ($/kWh)</strong> column uses a VLOOKUP with approximate match (<code>TRUE</code>) to pull the correct electricity tariff from a separate Rate Table based on the session start hour — mapping Off-Peak ($0.082), Mid-Peak ($0.142), and On-Peak ($0.218) rates automatically. The <strong>vs Target</strong> column calculates the utilisation delta in percentage points, with <strong>conditional formatting</strong> applied to highlight over- and under-performance at a glance. A dedicated Revenue column multiplies sessions × avg kWh × the VLOOKUP rate, making cost-of-demand modelling formula-driven throughout.</p>
+              <h3>Dynamic TOU Rate Engine</h3>
+              <p>A Raw Data sheet where every charging session is automatically priced using a <strong>VLOOKUP (Approximate Match)</strong>. This pulls the specific electricity cost from a rate table based on the start-hour of the session, replacing what was previously a manual estimate.</p>
             </div>
             <div class="deliverable-screens">
               <img src="assets/images/work/report-rawdata.png" alt="Raw data sheet with VLOOKUP TOU rate lookup and conditional formatting" class="screen single" />
@@ -316,11 +316,10 @@
         <div class="section-label">My Contribution</div>
         <div class="section-body">
           <ul class="contribution-list">
-            <li>Designed a unified data model mapping three station types — each with different power outputs, session lengths, and pricing exposure — into a single comparable workbook</li>
-            <li>Built a Time-of-Use Rate Table and VLOOKUP with <code>TRUE</code> approximate match to automatically apply tiered electricity pricing ($0.082 / $0.142 / $0.218 per kWh) based on session hour</li>
-            <li>Created a Duck Curve analysis using hourly aggregation to pinpoint the 18:00–20:00 on-peak demand window — the highest-cost load period for the network operator</li>
-            <li>Applied conditional formatting to surface above/below-target utilisation without manual review, and built a Station Specs lookup table mapping each charger type to its hardware constraints</li>
-            <li>Produced a stakeholder-ready dashboard with five KPI callouts, a utilisation bar chart, and a colour-coded load profile — structured for monthly update by a non-technical team</li>
+            <li><strong>Unified data model:</strong> Consolidated session logs across station types with varying power outputs and session durations into a single comparable structure</li>
+            <li><strong>Automated cost modelling:</strong> Built the VLOOKUP logic — <code>=VLOOKUP(HOUR(timestamp), rate_table, 2, TRUE)</code> — to automate Time-of-Use cost calculations per session</li>
+            <li><strong>Demand window analysis:</strong> Aggregated 6 months of data to identify that 67% of energy demand occurred during the 18:00–20:00 window, providing a data-backed case for peak shaving strategies</li>
+            <li><strong>Operational handover:</strong> Designed the workbook with protected formulas and clear input areas so the team could continue using it independently after the engagement</li>
           </ul>
         </div>
       </section>
@@ -328,7 +327,7 @@
       <section class="case-section">
         <div class="section-label">Result</div>
         <div class="section-body">
-          <p>A fully reusable operational intelligence template demonstrating that the same analytical toolkit — VLOOKUP, conditional formatting, pivot-style aggregation — applies equally to green-tech infrastructure as it does to communications reporting. Key findings from the modelled data: DC Fast Chargers averaged <strong>66% utilisation</strong> against a 65% target; the duck curve confirmed <strong>67% of peak demand falls within the on-peak TOU window</strong>, carrying a direct cost premium of $0.136/kWh over off-peak rates. The workbook is structured to extend to additional station locations or pricing zones without structural changes.</p>
+          <p>The workbook gave the operations team a clear view of which stations were hitting their 65% utilisation targets and where electricity surcharges were compressing margins. The duck curve confirmed that <strong>67% of energy demand fell within the on-peak TOU window</strong> — providing a concrete, data-backed case for peak shaving investment. The tool was structured to remain useful well beyond the engagement, with formula logic that extends to additional stations or pricing zones without structural changes.</p>
           <p style="margin-top:1rem;">
             <a href="assets/meridian-ev-charging-report-2023.xlsx" class="download-link" download>Download the Excel file ↓</a>
           </p>
