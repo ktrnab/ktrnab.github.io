@@ -470,6 +470,10 @@ import numpy as np
 W, H = 14, 8.5
 DPI = 140
 
+import matplotlib
+matplotlib.rcParams['font.family'] = 'serif'
+matplotlib.rcParams['font.serif'] = ['DejaVu Serif', 'Georgia', 'Times New Roman', 'serif']
+
 def fig(facecolor='#FFFFFF'):
     f, ax = plt.subplots(figsize=(W, H), facecolor=facecolor)
     ax.set_xlim(0, W)
