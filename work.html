@@ -145,6 +145,100 @@
 
     </article>
 
+    <!-- CASE STUDY 2 -->
+    <article class="case-study" id="meridian-report">
+
+      <header class="case-header">
+        <div class="case-meta">
+          <span class="case-tag">Analytics · Reporting · Excel</span>
+          <span class="case-year">2024</span>
+        </div>
+        <h1>Internal Communications Channel Report</h1>
+        <p class="case-org">Meridian Insurance Group (Sample Project)</p>
+        <div class="case-role-strip">
+          <div class="role-item">
+            <span class="role-label">Role</span>
+            <span class="role-value">Internal Comms Analyst</span>
+          </div>
+          <div class="role-item">
+            <span class="role-label">Scope</span>
+            <span class="role-value">Data modelling · Analysis · Reporting · Visualisation</span>
+          </div>
+          <div class="role-item">
+            <span class="role-label">Tools</span>
+            <span class="role-value">Excel · VLOOKUP · Pivot Charts</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="case-section">
+        <div class="section-label">Context</div>
+        <div class="section-body">
+          <p>Internal communications teams are often producing content without a clear view of what is performing and what is not. Without a structured reporting process, it is difficult to justify resource allocation, demonstrate impact to leadership, or identify which channels and content types deserve more investment.</p>
+          <p>This sample project simulates a full-year performance review for a mid-size insurance company's internal comms function, covering three channels: an <strong>email newsletter</strong>, an <strong>intranet</strong>, and <strong>LinkedIn</strong>.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="section-label">The Brief</div>
+        <div class="section-body">
+          <p>Build a reusable, stakeholder-ready reporting workbook that tracks monthly channel performance against industry benchmarks, surfaces trends over time, and can be handed to a non-technical team for ongoing updates.</p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="section-label">What Was Built</div>
+        <div class="section-body full-width">
+
+          <div class="deliverable">
+            <div class="deliverable-info">
+              <h3>Dashboard &amp; Channel Comparison</h3>
+              <p>A side-by-side view of average engagement rate vs industry benchmark across all three channels, alongside a monthly trend line for the email newsletter showing where performance dipped below benchmark (summer) and recovered strongly in Q4. Green shading indicates above-benchmark periods; red indicates below.</p>
+            </div>
+            <div class="deliverable-screens">
+              <img src="assets/images/work/report-dashboard.png" alt="Dashboard showing channel comparison bar chart and email monthly trend line" class="screen single" />
+            </div>
+          </div>
+
+          <div class="deliverable">
+            <div class="deliverable-info">
+              <h3>Raw Data Sheet with VLOOKUP</h3>
+              <p>36 rows of monthly campaign data across all channels. The <strong>Benchmark Eng. Rate</strong> column uses a VLOOKUP to pull the correct industry benchmark from a separate reference table based on the channel in column A. The <strong>vs Benchmark</strong> column calculates the delta, with conditional formatting applied to highlight over- and under-performance at a glance.</p>
+            </div>
+            <div class="deliverable-screens">
+              <img src="assets/images/work/report-rawdata.png" alt="Raw data sheet with VLOOKUP benchmark column and conditional formatting" class="screen single" />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="section-label">My Contribution</div>
+        <div class="section-body">
+          <ul class="contribution-list">
+            <li>Designed a unified data model to track three channels with different engagement metrics in a single workbook</li>
+            <li>Built a VLOOKUP reference table mapping each channel to its industry benchmark, used across Raw Data and Channel Summary sheets</li>
+            <li>Created pivot-style channel summary with aggregated totals and average rates by channel</li>
+            <li>Applied conditional formatting to surface above/below benchmark performance without manual review</li>
+            <li>Produced a stakeholder-ready dashboard tab with KPI callouts and two chart types (bar and line)</li>
+            <li>Structured the workbook for handover: clearly labelled sheets, formula-driven cells, no manual overrides</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <div class="section-label">Result</div>
+        <div class="section-body">
+          <p>A fully reusable reporting template that any communications team could update monthly with minimal effort. Key findings from the simulated data: email newsletter averaged <strong>51.2% open rate</strong> against a 47% benchmark, with a predictable summer dip and strong Q4 recovery. LinkedIn engagement averaged <strong>3.8%</strong> against a 3.5% benchmark. The workbook structure makes it straightforward to extend to additional channels or time periods.</p>
+          <p style="margin-top:1rem;">
+            <a href="assets/meridian-comms-report-2024.xlsx" class="download-link" download>Download the Excel file ↓</a>
+          </p>
+        </div>
+      </section>
+
+    </article>
+
     <div class="more-coming">
       <p>More case studies coming soon.</p>
     </div>

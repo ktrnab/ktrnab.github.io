@@ -205,6 +205,24 @@ main {
   font-style: italic;
 }
 
+/* Download link */
+.download-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  text-decoration: none;
+  border: 1.5px solid var(--green-dark);
+  padding: 0.45rem 1.1rem;
+  border-radius: 99px;
+  letter-spacing: 0.03em;
+}
+
+.download-link:hover {
+  background: var(--green-dark);
+  color: #fff;
+}
+
 /* CTA */
 .work-cta {
   text-align: center;
