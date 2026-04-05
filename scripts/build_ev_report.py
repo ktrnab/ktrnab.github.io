@@ -607,35 +607,42 @@ def build_rawdata():
     txt(ax, W/2, H-0.3, 'Monthly Charging Session Data — Raw Data Sheet with VLOOKUP',
         size=11, color='#FFFFFF', ha='center', bold=True)
 
-    # Column headers
-    col_headers = ['Station Type','Month','Sessions','Avg kWh/Session',
-                   'Total kWh','Utilisation','Target','vs Target','Rate (VLOOKUP)','Est. Revenue']
-    col_xs = [0.1, 2.2, 3.1, 4.0, 5.1, 6.15, 7.05, 7.95, 9.05, 10.3]
-    col_ws = [2.0, 0.8, 0.8, 1.0, 1.0, 0.85, 0.85, 1.0,  1.2,  1.6]
+    # 9 columns — table occupies x=0.05..11.2, callout lives in right margin
+    col_headers = ['Station Type','Month','Sessions','Avg kWh',
+                   'Utilisation','Target','vs Target','Rate ($/kWh)','Revenue']
+    col_xs = [0.12, 2.25, 3.1, 4.0, 5.0, 5.95, 6.9, 8.05, 9.4]
+    col_ws = [2.0,  0.75, 0.8, 0.85, 0.85, 0.85, 1.0,  1.2,  1.5]
 
     header_y = H - 0.9
-    rect(ax, 0.05, header_y - 0.1, W - 0.1, 0.44, '#2D6A4F')
+    rect(ax, 0.05, header_y - 0.1, 11.0, 0.44, '#2D6A4F')
     for hdr, cx in zip(col_headers, col_xs):
         txt(ax, cx, header_y + 0.07, hdr, size=7, color='#FFFFFF', ha='left', bold=True)
 
-    # Sample rows — show first 10 rows (L2 full year + DCFC start)
+    # TOU rate lookup — varies by station type to illustrate VLOOKUP concept
+    tou_rates = {
+        'Level 2 (L2)':          [0.082]*6 + [0.142]*4 + [0.082]*2,   # mostly off/mid-peak
+        'DC Fast Charger (DCFC)':[0.218]*12,                            # peak evening sessions
+        'Level 1 (L1)':          [0.082]*12,                            # overnight off-peak
+    }
+
     sample_rows = []
     for stype in STATION_TYPES:
         for m_i, month in enumerate(MONTHS):
-            util  = base_util[stype][m_i]
-            kwh   = avg_kwh[stype][m_i]
-            sess  = sessions[stype][m_i]
-            total = round(sess * kwh, 1)
+            util   = base_util[stype][m_i]
+            kwh    = avg_kwh[stype][m_i]
+            sess   = sessions[stype][m_i]
             target = TARGETS[stype]
             vs_tgt = round((util - target) * 100, 1)
+            rate   = tou_rates[stype][m_i]
+            rev    = sess * kwh * rate
             sample_rows.append((
                 stype[:12], month, sess,
-                f'{kwh:.1f}', f'{total:,.0f}',
+                f'{kwh:.1f}',
                 f'{util:.1%}', f'{target:.0%}',
-                vs_tgt, '=VLOOKUP(17,...)', f'${sess*kwh*0.218:,.0f}'
+                vs_tgt, f'${rate:.3f}', f'${rev:,.0f}'
             ))
 
-    shown = sample_rows[:14]
+    shown = sample_rows[:18]
     row_h = 0.38
     start_y = header_y - 0.15
     for i, row in enumerate(shown):
@@ -643,64 +650,60 @@ def build_rawdata():
         if ry < 0.15: break
         bg = '#F8F9FA' if i % 2 == 0 else '#FFFFFF'
 
-        # Colour vs Target cell
-        vs_tgt_val = row[7]
-        vs_color = '#C8E6C9' if vs_tgt_val >= 0 else '#FFCDD2'
+        vs_tgt_val = row[6]
+        vs_color   = '#C8E6C9' if vs_tgt_val >= 0 else '#FFCDD2'
         rate_color = '#FFF8E1'
 
-        rect(ax, 0.05, ry - 0.03, W - 0.1, row_h - 0.04, bg)
+        rect(ax, 0.05, ry - 0.03, 11.0, row_h - 0.04, bg)
 
         for j, (val, cx) in enumerate(zip(row, col_xs)):
             cell_color = None
-            if j == 7: cell_color = vs_color
-            if j == 8: cell_color = rate_color
+            if j == 6: cell_color = vs_color
+            if j == 7: cell_color = rate_color
             if cell_color:
                 rect(ax, cx - 0.05, ry - 0.03,
                      col_ws[j] + 0.02, row_h - 0.04, cell_color, radius=0.03)
 
-            display = f'+{val:.1f}pp' if j == 7 and isinstance(val, float) and val >= 0 \
-                      else (f'{val:.1f}pp' if j == 7 and isinstance(val, float) else str(val))
-            color = '#1A4731' if j == 7 and isinstance(val, float) and val >= 0 \
-                    else ('#CC0000' if j == 7 and isinstance(val, float) else '#333333')
+            display = f'+{val:.1f}pp' if j == 6 and isinstance(val, float) and val >= 0 \
+                      else (f'{val:.1f}pp' if j == 6 and isinstance(val, float) else str(val))
+            color = '#1A4731' if j == 6 and isinstance(val, float) and val >= 0 \
+                    else ('#CC0000' if j == 6 and isinstance(val, float) else '#333333')
             txt(ax, cx, ry + 0.12, display, size=7.5, color=color,
-                bold=(j == 0 or j == 7))
+                bold=(j == 0 or j == 6))
 
-        # Thin divider
         ax.axhline(ry - 0.04, color='#EEEEEE', linewidth=0.5, zorder=3)
 
-    # VLOOKUP callout box
-    callout_x, callout_y = 8.65, 2.2
-    rect(ax, callout_x, callout_y, 5.1, 2.4, '#FFF8E1', radius=0.12,
-         ec='#F4A261', lw=1.5, zorder=10)
-    txt(ax, callout_x + 0.2, callout_y + 2.1, 'VLOOKUP Formula', size=8.5,
+    # VLOOKUP callout — right margin, clear of table
+    cx, cy, cw, ch = 11.3, 2.8, 2.55, 5.0
+    rect(ax, cx, cy, cw, ch, '#FFF8E1', radius=0.12, ec='#F4A261', lw=1.5, zorder=10)
+    txt(ax, cx + 0.18, cy + ch - 0.35, 'VLOOKUP Formula', size=8,
         color='#7D4E00', bold=True, zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 1.78,
-        '=VLOOKUP(SessionHour,', size=7.5, color='#333333', zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 1.52,
-        "  'Rate Table'!$B$3:$C$26,", size=7.5, color='#1A4731', zorder=11, bold=True)
-    txt(ax, callout_x + 0.2, callout_y + 1.26,
-        '  2, TRUE)', size=7.5, color='#333333', zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 0.95,
-        'Maps session start hour to the', size=7, color='#555555', zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 0.72,
-        'correct TOU electricity rate.', size=7, color='#555555', zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 0.45,
-        'TRUE = approximate match for', size=7, color='#555555', zorder=11)
-    txt(ax, callout_x + 0.2, callout_y + 0.22,
-        'tiered range lookup.', size=7, color='#555555', zorder=11)
+    for dy, line, bold, color in [
+        (0.75, '=VLOOKUP(', False, '#333333'),
+        (1.08, '  SessionHour,', False, '#333333'),
+        (1.38, "  'Rate Table'", True,  '#1A4731'),
+        (1.62, '  !B3:C26, 2, TRUE)', True,  '#1A4731'),
+        (2.1,  'Maps session start hour', False, '#666666'),
+        (2.35, 'to the TOU rate band.', False, '#666666'),
+        (2.75, 'TRUE = approx match for', False, '#666666'),
+        (3.0,  'tiered range lookup.', False, '#666666'),
+    ]:
+        txt(ax, cx + 0.18, cy + ch - 0.35 - dy, line,
+            size=7, color=color, bold=bold, zorder=11)
 
-    # Arrow pointing to VLOOKUP column
-    ax.annotate('', xy=(9.45, 3.5), xytext=(callout_x + 0.1, callout_y + 1.52),
+    # Arrow from callout to Rate column header
+    ax.annotate('', xy=(9.35, header_y + 0.07),
+                xytext=(cx + 0.2, cy + ch - 0.35 - 0.75),
                 arrowprops=dict(arrowstyle='->', color='#F4A261', lw=1.5), zorder=12)
 
-    # Legend for conditional formatting
+    # Legend
     leg_y = 0.35
-    rect(ax, 0.1, leg_y, 0.45, 0.25, '#C8E6C9', radius=0.04)
-    txt(ax, 0.65, leg_y + 0.06, 'Above target', size=7.5, color='#1A4731')
-    rect(ax, 2.2, leg_y, 0.45, 0.25, '#FFCDD2', radius=0.04)
-    txt(ax, 2.75, leg_y + 0.06, 'Below target', size=7.5, color='#CC0000')
-    rect(ax, 4.3, leg_y, 0.45, 0.25, '#FFF8E1', radius=0.04, ec='#F4A261', lw=0.8)
-    txt(ax, 4.85, leg_y + 0.06, 'VLOOKUP result', size=7.5, color='#7D4E00')
+    rect(ax, 0.1,  leg_y, 0.45, 0.25, '#C8E6C9', radius=0.04)
+    txt(ax, 0.65,  leg_y + 0.06, 'Above target',  size=7.5, color='#1A4731')
+    rect(ax, 2.2,  leg_y, 0.45, 0.25, '#FFCDD2', radius=0.04)
+    txt(ax, 2.75,  leg_y + 0.06, 'Below target',  size=7.5, color='#CC0000')
+    rect(ax, 4.3,  leg_y, 0.45, 0.25, '#FFF8E1', radius=0.04, ec='#F4A261', lw=0.8)
+    txt(ax, 4.85,  leg_y + 0.06, 'VLOOKUP result', size=7.5, color='#7D4E00')
 
     f.savefig('assets/images/work/report-rawdata.png', dpi=DPI,
               bbox_inches='tight', facecolor='#FFFFFF')
