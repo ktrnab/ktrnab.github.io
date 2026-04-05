@@ -500,102 +500,156 @@ def txt(ax, x, y, s, size=9, color='#333333', ha='left', va='bottom',
 
 # ── Dashboard PNG ────────────────────────────────────────────────────────────
 def build_dashboard():
-    f, ax = fig('#F8F9FA')
+    import matplotlib.patheffects as pe
+    from matplotlib.patches import Patch
 
-    # Header bar
-    rect(ax, 0, H-0.7, W, 0.7, '#1A4731')
-    txt(ax, W/2, H-0.42, 'EV Charging Network — Operational Intelligence Dashboard',
-        size=13, color='#FFFFFF', ha='center', bold=True)
-    txt(ax, W/2, H-0.64, 'GreenGrid EV Solutions  ·  FY 2023  ·  Annual Network Review',
-        size=8, color='#A8D5B5', ha='center')
+    BG       = '#080D1A'
+    CARD_BG  = '#0D1628'
+    GRID_COL = '#111E30'
+    NEON     = '#00E5A0'
+    CYAN     = '#00C2D4'
+    AMBER    = '#FFB700'
+    PINK     = '#FF4D6D'
+    VIOLET   = '#B388FF'
+    TEXT_HI  = '#D8EEF8'
+    TEXT_MID = '#6B8CAE'
+    TEXT_DIM = '#2E4460'
+    SPINE    = '#1A2E48'
+
+    f, ax = fig(BG)
+
+    # Subtle background grid
+    for xi in np.arange(0, W + 1, 1.0):
+        ax.axvline(xi, color=GRID_COL, linewidth=0.4, zorder=1)
+    for yi in np.arange(0, H + 1, 1.0):
+        ax.axhline(yi, color=GRID_COL, linewidth=0.4, zorder=1)
+
+    # Header
+    rect(ax, 0, H - 0.72, W, 0.72, '#09122A')
+    rect(ax, 0, H - 0.75, W, 0.035, NEON, zorder=5)   # neon accent line
+    txt(ax, W/2, H - 0.42, 'EV Charging Network — Operational Intelligence Dashboard',
+        size=13, color=TEXT_HI, ha='center', bold=True, zorder=10)
+    txt(ax, W/2, H - 0.66, 'BayWa Mobility Solutions  ·  FY 2023  ·  Operational Review',
+        size=7.5, color=TEXT_MID, ha='center', zorder=10)
 
     # KPI cards
     kpi_data = [
-        ('Total Energy Delivered', f'{total_kwh_all/1000:.1f} MWh', '#B7E4C7', '#1A4731'),
-        ('Total Sessions',         f'{total_sess_all:,}',            '#D6EAF8', '#154360'),
-        ('Avg DCFC Utilisation',   f'{dcfc_util:.0%}',               '#FFF3CD', '#7D6608'),
-        ('Peak Load Window',       '18:00 – 20:00',                  '#FDEBD0', '#784212'),
-        ('Est. Annual Revenue',    f'${revenue_all:,.0f}',           '#E8DAEF', '#4A235A'),
+        ('Total Energy',      f'{total_kwh_all/1000:.1f} MWh', NEON),
+        ('Total Sessions',    f'{total_sess_all:,}',            CYAN),
+        ('DCFC Utilisation',  f'{dcfc_util:.0%}',               AMBER),
+        ('Peak Window',       '18:00–20:00',                    PINK),
+        ('Est. Revenue',      f'${revenue_all:,.0f}',           VIOLET),
     ]
     card_w = (W - 0.8) / 5 - 0.12
-    for i, (label, val, bg, fg) in enumerate(kpi_data):
+    for i, (label, val, accent) in enumerate(kpi_data):
         cx = 0.4 + i * (card_w + 0.12)
-        rect(ax, cx, H-1.65, card_w, 0.82, bg, radius=0.1, ec='#DDDDDD', lw=0.5)
-        txt(ax, cx + card_w/2, H-1.1, val, size=14, color=fg, ha='center', bold=True)
-        txt(ax, cx + card_w/2, H-1.56, label, size=7, color='#555555', ha='center')
+        cy = H - 1.78
+        # Outer glow
+        rect(ax, cx - 0.06, cy - 0.06, card_w + 0.12, 0.92, accent,
+             radius=0.13, alpha=0.12, zorder=3)
+        # Card body
+        rect(ax, cx, cy, card_w, 0.80, CARD_BG, radius=0.1,
+             ec=accent, lw=0.8, alpha=1, zorder=4)
+        # Top accent stripe
+        rect(ax, cx + 0.02, cy + 0.76, card_w - 0.04, 0.035, accent,
+             radius=0.04, zorder=5)
+        txt(ax, cx + card_w/2, cy + 0.44, val,
+            size=15, color=accent, ha='center', bold=True, zorder=6)
+        txt(ax, cx + card_w/2, cy + 0.10, label,
+            size=6.5, color=TEXT_MID, ha='center', zorder=6)
 
-    # ── Left chart: Utilisation vs Target (bar chart) ────────────────────────
-    ax_bar = f.add_axes([0.04, 0.13, 0.42, 0.50])
+    # ── Left chart: Utilisation vs Target ────────────────────────────────────
+    ax_bar = f.add_axes([0.04, 0.12, 0.42, 0.51])
+    ax_bar.set_facecolor('#0A1422')
+
     station_labels = ['Level 2\n(L2)', 'DC Fast\n(DCFC)', 'Level 1\n(L1)']
-    util_vals  = [sum(base_util[s])/12 for s in STATION_TYPES]
+    util_vals   = [sum(base_util[s])/12 for s in STATION_TYPES]
     target_vals = [TARGETS[s] for s in STATION_TYPES]
 
     x = np.arange(len(station_labels))
     w = 0.32
-    bars1 = ax_bar.bar(x - w/2, util_vals, w, label='Avg Utilisation',
-                       color=['#95D5B2','#52B788','#1B4332'], zorder=3)
-    bars2 = ax_bar.bar(x + w/2, target_vals, w, label='Target',
-                       color='none', edgecolor='#666666', linewidth=1.5,
-                       linestyle='--', zorder=3)
+
+    # Glow layer
+    ax_bar.bar(x - w/2, util_vals, w * 1.8, color=NEON, alpha=0.08, zorder=2)
+    bars1 = ax_bar.bar(x - w/2, util_vals, w, color=NEON, alpha=0.85, zorder=3)
+    ax_bar.bar(x + w/2, target_vals, w, color='none',
+               edgecolor=AMBER, linewidth=1.5, linestyle='--', zorder=3)
 
     ax_bar.set_xticks(x)
-    ax_bar.set_xticklabels(station_labels, fontsize=8)
-    ax_bar.set_ylabel('Utilisation Rate', fontsize=8)
+    ax_bar.set_xticklabels(station_labels, fontsize=8, color=TEXT_MID)
+    ax_bar.set_ylabel('Utilisation Rate', fontsize=8, color=TEXT_MID)
     ax_bar.set_ylim(0, 0.85)
     ax_bar.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f'{v:.0%}'))
+    ax_bar.tick_params(colors=TEXT_DIM)
     ax_bar.set_title('Station Utilisation vs Target', fontsize=10, fontweight='bold',
-                     color='#1A4731', pad=8)
-    ax_bar.legend(fontsize=7, framealpha=0.8)
-    ax_bar.grid(axis='y', alpha=0.3, zorder=0)
+                     color=TEXT_HI, pad=8)
+    ax_bar.legend(['Avg Utilisation', 'Target'], fontsize=7,
+                  framealpha=0.15, facecolor=CARD_BG, edgecolor=SPINE,
+                  labelcolor=TEXT_MID)
+    ax_bar.grid(axis='y', alpha=0.12, color='#1E3050', zorder=0)
+    for spine in ax_bar.spines.values():
+        spine.set_edgecolor(SPINE)
     ax_bar.spines[['top','right']].set_visible(False)
 
     for bar in bars1:
         h_val = bar.get_height()
-        ax_bar.text(bar.get_x() + bar.get_width()/2, h_val + 0.01,
-                    f'{h_val:.0%}', ha='center', va='bottom', fontsize=8, fontweight='bold')
+        t = ax_bar.text(bar.get_x() + bar.get_width()/2, h_val + 0.012,
+                        f'{h_val:.0%}', ha='center', va='bottom',
+                        fontsize=8, fontweight='bold', color=NEON)
+        t.set_path_effects([pe.withStroke(linewidth=3, foreground=NEON, alpha=0.25)])
 
-    # ── Right chart: Duck Curve (hourly load) ─────────────────────────────────
-    ax_duck = f.add_axes([0.55, 0.13, 0.42, 0.50])
+    # ── Right chart: Duck Curve ───────────────────────────────────────────────
+    ax_duck = f.add_axes([0.55, 0.12, 0.42, 0.51])
+    ax_duck.set_facecolor('#0A1422')
+
     hours = list(range(24))
     off_peak_hours = list(range(7)) + [23]
     mid_peak_hours = list(range(7, 14)) + [22]
     on_peak_hours  = list(range(14, 22))
 
-    colors_per_hour = []
+    bar_colors = []
     for h in hours:
-        if h in on_peak_hours:  colors_per_hour.append('#FFCDD2')
-        elif h in mid_peak_hours: colors_per_hour.append('#FFF3CD')
-        else: colors_per_hour.append('#DDEEFF')
+        if h in on_peak_hours:   bar_colors.append(PINK)
+        elif h in mid_peak_hours: bar_colors.append(AMBER)
+        else:                     bar_colors.append(CYAN)
 
-    ax_duck.bar(hours, duck_load, color=colors_per_hour, edgecolor='none', zorder=3)
-    ax_duck.plot(hours, duck_load, color='#1A4731', linewidth=2, zorder=4, marker='o',
-                 markersize=3)
+    ax_duck.bar(hours, duck_load, color=bar_colors, edgecolor='none', alpha=0.35, zorder=3)
 
-    # Shade peak zone
-    ax_duck.axvspan(14, 21, alpha=0.08, color='#CC0000', zorder=2)
-    ax_duck.text(17.5, 170, 'On-Peak\n(TOU High Rate)', ha='center', fontsize=7,
-                 color='#CC0000', style='italic')
+    # Glowing curve — layered
+    ax_duck.plot(hours, duck_load, color=CYAN, linewidth=7, alpha=0.10, zorder=4)
+    ax_duck.plot(hours, duck_load, color=CYAN, linewidth=3, alpha=0.22, zorder=5)
+    ax_duck.plot(hours, duck_load, color=CYAN, linewidth=1.5, zorder=6,
+                 marker='o', markersize=3,
+                 markerfacecolor=CYAN, markeredgecolor='none')
+
+    ax_duck.axvspan(14, 21, alpha=0.07, color=PINK, zorder=2)
+    ax_duck.text(17.5, 175, 'On-Peak\n(TOU High Rate)', ha='center', fontsize=7,
+                 color=PINK, style='italic')
 
     ax_duck.set_xticks(range(0, 24, 3))
-    ax_duck.set_xticklabels([f'{h:02d}:00' for h in range(0, 24, 3)], fontsize=7)
-    ax_duck.set_ylabel('Avg Grid Load (kW)', fontsize=8)
+    ax_duck.set_xticklabels([f'{h:02d}:00' for h in range(0, 24, 3)],
+                             fontsize=7, color=TEXT_MID)
+    ax_duck.set_ylabel('Avg Grid Load (kW)', fontsize=8, color=TEXT_MID)
     ax_duck.set_ylim(0, 200)
     ax_duck.set_title('Hourly Load Profile — "Duck Curve"', fontsize=10,
-                      fontweight='bold', color='#1A4731', pad=8)
-    ax_duck.grid(axis='y', alpha=0.3, zorder=0)
+                      fontweight='bold', color=TEXT_HI, pad=8)
+    ax_duck.grid(axis='y', alpha=0.12, color='#1E3050', zorder=0)
+    ax_duck.tick_params(colors=TEXT_DIM)
+    for spine in ax_duck.spines.values():
+        spine.set_edgecolor(SPINE)
     ax_duck.spines[['top','right']].set_visible(False)
 
-    # Legend patches
-    from matplotlib.patches import Patch
     legend_elements = [
-        Patch(facecolor='#DDEEFF', label='Off-Peak ($0.082)'),
-        Patch(facecolor='#FFF3CD', label='Mid-Peak ($0.142)'),
-        Patch(facecolor='#FFCDD2', label='On-Peak ($0.218)'),
+        Patch(facecolor=CYAN,  alpha=0.6, label='Off-Peak ($0.082)'),
+        Patch(facecolor=AMBER, alpha=0.6, label='Mid-Peak ($0.142)'),
+        Patch(facecolor=PINK,  alpha=0.6, label='On-Peak ($0.218)'),
     ]
-    ax_duck.legend(handles=legend_elements, fontsize=7, loc='upper left', framealpha=0.8)
+    ax_duck.legend(handles=legend_elements, fontsize=7, loc='upper left',
+                   framealpha=0.15, facecolor=CARD_BG, edgecolor=SPINE,
+                   labelcolor=TEXT_MID)
 
     f.savefig('assets/images/work/report-dashboard.png', dpi=DPI,
-              bbox_inches='tight', facecolor='#F8F9FA')
+              bbox_inches='tight', facecolor=BG)
     plt.close(f)
     print("Saved report-dashboard.png")
 
