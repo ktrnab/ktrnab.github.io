@@ -1,7 +1,7 @@
 """
 Build EV Charging Network — Operational Intelligence Report
 Generates:
-  - assets/meridian-ev-charging-report-2023.xlsx
+  - assets/baywa-ev-charging-report-2025.xlsx
   - assets/images/work/report-dashboard.png
   - assets/images/work/report-rawdata.png
 """
@@ -18,7 +18,7 @@ import random, math, os
 os.chdir('/Users/katrinab/ktrnab.github.io')
 random.seed(42)
 
-FNAME = 'assets/meridian-ev-charging-report-2023.xlsx'
+FNAME = 'assets/baywa-ev-charging-report-2025.xlsx'
 wb = openpyxl.Workbook()
 
 # ── Palette ─────────────────────────────────────────────────────────────────
@@ -351,7 +351,7 @@ ws_dash.merge_cells('A1:K1')
 ws_dash['A1'].alignment = center()
 ws_dash.row_dimensions[1].height = 32
 
-ws_dash['A2'] = 'GreenGrid EV Solutions  ·  FY 2023  ·  Annual Network Review'
+ws_dash['A2'] = 'BayWa Mobility Solutions  ·  FY 2024–2025  ·  Charging Network Performance Review'
 ws_dash['A2'].font = font(italic=True, size=9, color='555555')
 ws_dash.merge_cells('A2:K2')
 ws_dash['A2'].alignment = center()
