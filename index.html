@@ -23,10 +23,10 @@
     <span class="nav-logo">KM</span>
     <div class="nav-links">
       <a href="#hero">Home</a>
-      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="work.html">Work Samples</a>
+      <a href="#about">About</a>
       <a href="#interests">Life</a>
       <a href="#contact">Contact</a>
     </div>
@@ -35,7 +35,7 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <img src="assets/images/katrina.jpg" alt="Katrina Michelle" class="hero-photo" />
+      <img src="assets/images/katrina-headshot.jpg" alt="Katrina Michelle" class="hero-photo" />
       <div class="hero-text">
         <p class="hero-eyebrow">Welcome to my corner of the internet</p>
         <h1>Katrina Michelle</h1>
@@ -50,66 +50,6 @@
     <div class="hero-scroll-hint">
       <span>Scroll</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ABOUT: SKILLS & EDUCATION -->
-  <section id="about">
-    <div class="section-inner">
-      <h2 class="section-heading">About</h2>
-      <div class="about-cards">
-        <div class="card">
-          <h3>Key Skills</h3>
-          <ul>
-            <li>Internal communications &amp; change adoption</li>
-            <li>AI enablement &amp; community building</li>
-            <li>Data analysis &amp; visualisation</li>
-            <li>Executive presentations &amp; reporting</li>
-            <li>Project coordination &amp; stakeholder management</li>
-            <li>User research &amp; information architecture</li>
-            <li>Event and editorial planning</li>
-            <li>Structured problem solving</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Tools &amp; Platforms</h3>
-          <ul>
-            <li>Excel (PivotTables, VLOOKUP, modelling) · PowerPoint</li>
-            <li>Python (NLP) · R · Tableau</li>
-            <li>Claude · ChatGPT · Copilot</li>
-            <li>SharePoint · Confluence · Teams</li>
-            <li>WordPress / CMS · Adobe Analytics</li>
-            <li>Jira · Asana</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Education</h3>
-          <ul>
-            <li>
-              <strong>M.Sc. Management &amp; Digital Technologies</strong>
-              <em>Ludwig Maximilian University · Current</em>
-              <em>Thesis: scoring university documents with NLP (Python, Sentence-BERT)</em>
-            </li>
-            <li>
-              <strong>B.A. Human-Computer Interaction</strong>
-              <em>The Ohio State University · 2019</em>
-              <em>Minors: Entrepreneurship, Arts &amp; Technology</em>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card card-wide">
-        <h3>Certifications</h3>
-        <div class="certs-grid">
-          <span>Google Digital Marketing &amp; E-commerce</span>
-          <span>Google Data Analytics</span>
-          <span>Google Project Management</span>
-          <span>Ohio State Web Accessibility Certified Tester</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -201,65 +141,185 @@
       <p class="section-sub">Selected work and case studies.</p>
       <div class="projects-grid">
 
-        <div class="project-card">
-          <div class="project-tag">Strategy · UX Research</div>
-          <h3>BayWa EV Charging Strategy</h3>
-          <p><strong>Problem:</strong> EV drivers were charging once and not coming back. BayWa wanted to know why.<br><br>
-          <strong>Action:</strong> Led competitive analysis, customer journey mapping, and a SWOT analysis as part of an LMU student consulting team, using a mixed-methods approach.<br><br>
-          <strong>Result:</strong> Delivered a strategic blueprint identifying digital friction and gaps in hub amenities as the main reasons drivers did not return. Presented to BMS in February 2025.</p>
-          <div class="project-skills">
-            <span>Strategy</span>
-            <span>Competitive Analysis</span>
-            <span>Customer Journey Mapping</span>
-            <span>UX Research</span>
-          </div>
-          <a href="work.html#ev-report" class="case-study-link">View case study →</a>
+        <article class="project-card">
+          <header class="project-head">
+            <div class="project-tag">Strategy · UX Research</div>
+            <h3>BayWa EV Charging Strategy</h3>
+          </header>
+          <dl class="project-par">
+            <div>
+              <dt>Problem</dt>
+              <dd>EV drivers were charging once and not coming back. BayWa wanted to know why.</dd>
+            </div>
+            <div>
+              <dt>Action</dt>
+              <dd>Led competitive analysis, customer journey mapping, and a SWOT analysis as part of an LMU student consulting team, using a mixed-methods approach.</dd>
+            </div>
+            <div class="project-result">
+              <dt>Result</dt>
+              <dd>Delivered a strategic blueprint identifying digital friction and gaps in hub amenities as the main reasons drivers did not return. Presented to BMS in February 2025.</dd>
+            </div>
+          </dl>
+          <footer class="project-footer">
+            <div class="project-skills">
+              <span>Strategy</span>
+              <span>Competitive Analysis</span>
+              <span>Customer Journey Mapping</span>
+              <span>UX Research</span>
+            </div>
+            <a href="work.html#ev-report" class="case-study-link">View case study <span aria-hidden="true">→</span></a>
+          </footer>
+        </article>
+
+        <article class="project-card">
+          <header class="project-head">
+            <div class="project-tag">Applied AI · NLP</div>
+            <h3>Master’s Thesis</h3>
+          </header>
+          <dl class="project-par">
+            <div>
+              <dt>Problem</dt>
+              <dd>Universities describe their entrepreneurial support in long institutional documents that are hard to compare at scale.</dd>
+            </div>
+            <div>
+              <dt>Action</dt>
+              <dd>Operationalising the ENTRE-U scale as NLP anchors and scoring university documents with Python and Sentence-BERT embeddings.</dd>
+            </div>
+            <div class="project-result">
+              <dt>Result</dt>
+              <dd>In progress. A method for comparing institutions consistently, without reading every document by hand.</dd>
+            </div>
+          </dl>
+          <footer class="project-footer">
+            <div class="project-skills">
+              <span>Python</span>
+              <span>NLP</span>
+              <span>Sentence-BERT</span>
+              <span>Research Design</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="project-card">
+          <header class="project-head">
+            <div class="project-tag">Intranet Strategy</div>
+            <h3>Nationwide Insurance Intranet Redesign</h3>
+          </header>
+          <dl class="project-par">
+            <div>
+              <dt>Problem</dt>
+              <dd>An org-chart-based intranet buried resources across departmental silos, generating repeat support tickets and frustrating employees whose daily tasks crossed team boundaries.</dd>
+            </div>
+            <div>
+              <dt>Action</dt>
+              <dd>Led user research (12 interviews, 84-person survey) to map navigation failures, proposed a task-based IA, and designed a cross-channel editorial calendar in Miro.</dd>
+            </div>
+            <div class="project-result">
+              <dt>Result</dt>
+              <dd>The task-based IA became the new standard, cutting the path to key resources from 4 clicks to 2. The editorial calendar replaced ad hoc planning.</dd>
+            </div>
+          </dl>
+          <footer class="project-footer">
+            <div class="project-skills">
+              <span>UX Research</span>
+              <span>Information Architecture</span>
+              <span>Miro</span>
+              <span>Content Strategy</span>
+            </div>
+            <a href="work.html#nationwide-intranet" class="case-study-link">View case study <span aria-hidden="true">→</span></a>
+          </footer>
+        </article>
+
+        <article class="project-card">
+          <header class="project-head">
+            <div class="project-tag">Project Management</div>
+            <h3>Ohio State Website Migration</h3>
+          </header>
+          <dl class="project-par">
+            <div>
+              <dt>Problem</dt>
+              <dd>A legacy site built on hard-coded HTML was holding back a law school’s digital presence. The fix needed more than a redesign.</dd>
+            </div>
+            <div>
+              <dt>Action</dt>
+              <dd>Managed the full project lifecycle: aligning cross-functional requirements, coordinating stakeholders, overseeing the CMS build, and ensuring accessibility compliance throughout.</dd>
+            </div>
+            <div class="project-result">
+              <dt>Result</dt>
+              <dd>Delivered on time with measurable UX improvements and conversion gains in the first quarter after launch.</dd>
+            </div>
+          </dl>
+          <footer class="project-footer">
+            <div class="project-skills">
+              <span>Project Management</span>
+              <span>CMS / WordPress</span>
+              <span>Accessibility</span>
+              <span>Stakeholder Alignment</span>
+            </div>
+            <a href="work.html#osu-intranet" class="case-study-link">View case study <span aria-hidden="true">→</span></a>
+          </footer>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT: SKILLS & EDUCATION -->
+  <section id="about">
+    <div class="section-inner">
+      <h2 class="section-heading">About</h2>
+      <div class="about-cards">
+        <div class="card">
+          <h3>Key Skills</h3>
+          <ul>
+            <li>Internal communications &amp; change adoption</li>
+            <li>AI enablement &amp; community building</li>
+            <li>Data analysis &amp; visualisation</li>
+            <li>Executive presentations &amp; reporting</li>
+            <li>Project coordination &amp; stakeholder management</li>
+            <li>User research &amp; information architecture</li>
+            <li>Event and editorial planning</li>
+            <li>Structured problem solving</li>
+          </ul>
         </div>
 
-        <div class="project-card">
-          <div class="project-tag">Applied AI · NLP</div>
-          <h3>Master’s Thesis</h3>
-          <p><strong>Problem:</strong> Universities describe their entrepreneurial support in long institutional documents that are hard to compare at scale.<br><br>
-          <strong>Action:</strong> Operationalising the ENTRE-U scale as NLP anchors and scoring university documents with Python and Sentence-BERT embeddings.<br><br>
-          <strong>Result:</strong> In progress. A method for comparing institutions consistently, without reading every document by hand.</p>
-          <div class="project-skills">
-            <span>Python</span>
-            <span>NLP</span>
-            <span>Sentence-BERT</span>
-            <span>Research Design</span>
-          </div>
+        <div class="card">
+          <h3>Tools &amp; Platforms</h3>
+          <ul>
+            <li>Excel (PivotTables, VLOOKUP, modelling) · PowerPoint</li>
+            <li>Python (NLP) · R · Tableau</li>
+            <li>Claude · ChatGPT · Copilot</li>
+            <li>SharePoint · Confluence · Teams</li>
+            <li>WordPress / CMS · Adobe Analytics</li>
+            <li>Jira · Asana</li>
+          </ul>
         </div>
 
-        <div class="project-card">
-          <div class="project-tag">Intranet Strategy</div>
-          <h3>Nationwide Insurance Intranet Redesign</h3>
-          <p><strong>Problem:</strong> An org-chart-based intranet buried resources across departmental silos, generating repeat support tickets and frustrating employees whose daily tasks crossed team boundaries.<br><br>
-          <strong>Action:</strong> Led user research (12 interviews, 84-person survey) to map navigation failures, proposed a task-based IA, and designed a cross-channel editorial calendar in Miro.<br><br>
-          <strong>Result:</strong> The task-based IA became the new standard, cutting the path to key resources from 4 clicks to 2. The editorial calendar replaced ad hoc planning.</p>
-          <div class="project-skills">
-            <span>UX Research</span>
-            <span>Information Architecture</span>
-            <span>Miro</span>
-            <span>Content Strategy</span>
-          </div>
-          <a href="work.html#nationwide-intranet" class="case-study-link">View case study →</a>
+        <div class="card">
+          <h3>Education</h3>
+          <ul>
+            <li>
+              <strong>M.Sc. Management &amp; Digital Technologies</strong>
+              <em>Ludwig Maximilian University · Current</em>
+              <em>Thesis: scoring university documents with NLP (Python, Sentence-BERT)</em>
+            </li>
+            <li>
+              <strong>B.A. Human-Computer Interaction</strong>
+              <em>The Ohio State University · 2019</em>
+              <em>Minors: Entrepreneurship, Arts &amp; Technology</em>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <div class="project-card">
-          <div class="project-tag">Project Management</div>
-          <h3>Ohio State Website Migration</h3>
-          <p><strong>Problem:</strong> A legacy site built on hard-coded HTML was holding back a law school’s digital presence. The fix needed more than a redesign.<br><br>
-          <strong>Action:</strong> Managed the full project lifecycle: aligning cross-functional requirements, coordinating stakeholders, overseeing the CMS build, and ensuring accessibility compliance throughout.<br><br>
-          <strong>Result:</strong> Delivered on time with measurable UX improvements and conversion gains in the first quarter after launch.</p>
-          <div class="project-skills">
-            <span>Project Management</span>
-            <span>CMS / WordPress</span>
-            <span>Accessibility</span>
-            <span>Stakeholder Alignment</span>
-          </div>
-          <a href="work.html#osu-intranet" class="case-study-link">View case study →</a>
+      <div class="card card-wide">
+        <h3>Certifications</h3>
+        <div class="certs-grid">
+          <span>Google Digital Marketing &amp; E-commerce</span>
+          <span>Google Data Analytics</span>
+          <span>Google Project Management</span>
+          <span>Ohio State Web Accessibility Certified Tester</span>
         </div>
-
       </div>
     </div>
   </section>
