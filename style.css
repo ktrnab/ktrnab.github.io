@@ -8,19 +8,19 @@
 }
 
 :root {
-  --bg:           #edf0e5;
-  --bg-warm:      #e8ebe0;
-  --surface:      #f5f7f0;
+  --bg:           #eef1f6;
+  --bg-warm:      #e7ebf2;
+  --surface:      #f6f8fb;
   --surface2:     #ffffff;
-  --pill-bg:      #cae896;
-  --pill-bg-dark: #a8d46e;
-  --green-dark:   #2a5c27;
-  --green-mid:    #3d7a39;
-  --green-muted:  #6a8c65;
-  --text:         #1e2a1c;
-  --muted:        #7a8c75;
-  --border:       #d4dace;
-  --border-light: #e2e8da;
+  --pill-bg:      #c9d6ec;
+  --pill-bg-dark: #a9bde0;
+  --navy-dark:   #1c2e5a;
+  --navy-mid:    #2c4a85;
+  --navy-muted:  #556a90;
+  --text:         #141c2e;
+  --muted:        #5f6a83;
+  --border:       #d3d9e4;
+  --border-light: #e1e6ee;
 }
 
 html { scroll-behavior: smooth; }
@@ -36,7 +36,7 @@ body {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  background: rgba(237, 240, 229, 0.92);
+  background: rgba(238, 241, 246, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 3rem;
@@ -50,7 +50,7 @@ nav {
 .nav-logo {
   font-family: 'DM Serif Display', serif;
   font-size: 1.15rem;
-  color: var(--green-dark);
+  color: var(--navy-dark);
   letter-spacing: 0.02em;
 }
 
@@ -60,7 +60,7 @@ nav {
 }
 
 nav a {
-  color: var(--green-muted);
+  color: var(--navy-muted);
   text-decoration: none;
   font-size: 0.82rem;
   font-weight: 500;
@@ -72,7 +72,7 @@ nav a {
 nav a:hover,
 nav a.active {
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
 }
 
 /* ── HERO ── */
@@ -102,7 +102,7 @@ nav a.active {
   object-position: center top;
   border-radius: 100px 100px 60px 60px;
   border: 3px solid var(--pill-bg-dark);
-  box-shadow: 0 8px 28px rgba(42, 92, 39, 0.1);
+  box-shadow: 0 8px 28px rgba(28, 46, 90, 0.1);
 }
 
 .hero-eyebrow {
@@ -110,7 +110,7 @@ nav a.active {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--green-muted);
+  color: var(--navy-muted);
   margin-bottom: 0.5rem;
 }
 
@@ -119,7 +119,7 @@ nav a.active {
   font-size: 3.6rem;
   font-weight: 400;
   line-height: 1.05;
-  color: var(--green-dark);
+  color: var(--navy-dark);
   margin-bottom: 0.6rem;
 }
 
@@ -127,7 +127,7 @@ nav a.active {
   display: inline-block;
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--green-dark);
+  color: var(--navy-dark);
   background: var(--pill-bg);
   padding: 0.3rem 0.9rem;
   border-radius: 99px;
@@ -176,7 +176,7 @@ nav a.active {
 
 .btn-primary {
   padding: 0.6rem 1.4rem;
-  background: var(--green-dark);
+  background: var(--navy-dark);
   color: var(--pill-bg);
   text-decoration: none;
   border-radius: 99px;
@@ -186,14 +186,14 @@ nav a.active {
 }
 
 .btn-primary:hover {
-  background: var(--green-mid);
+  background: var(--navy-mid);
   transform: translateY(-1px);
 }
 
 .btn-ghost {
   padding: 0.6rem 1.4rem;
   border: 1px solid var(--border);
-  color: var(--green-muted);
+  color: var(--navy-muted);
   text-decoration: none;
   border-radius: 99px;
   font-size: 0.82rem;
@@ -205,7 +205,7 @@ nav a.active {
 .btn-ghost:hover {
   border-color: var(--pill-bg-dark);
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   transform: translateY(-1px);
 }
 
@@ -239,7 +239,7 @@ nav a.active {
   font-family: 'DM Serif Display', serif;
   font-size: 2.2rem;
   font-weight: 400;
-  color: var(--green-dark);
+  color: var(--navy-dark);
   margin-bottom: 2.5rem;
   position: relative;
   display: inline-block;
@@ -289,7 +289,7 @@ nav a.active {
 .card:hover {
   border-color: var(--pill-bg-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(42, 92, 39, 0.06);
+  box-shadow: 0 4px 20px rgba(28, 46, 90, 0.06);
 }
 
 .card h3 {
@@ -297,7 +297,7 @@ nav a.active {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--green-muted);
+  color: var(--navy-muted);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-light);
@@ -441,7 +441,7 @@ nav a.active {
 
 .timeline-badge.current {
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   border: 1px solid var(--pill-bg-dark);
 }
 
@@ -454,7 +454,7 @@ nav a.active {
 
 .timeline-company {
   font-size: 0.82rem;
-  color: var(--green-mid);
+  color: var(--navy-mid);
   margin-bottom: 0.85rem;
   font-weight: 500;
 }
@@ -493,7 +493,7 @@ nav a.active {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -511,7 +511,7 @@ nav a.active {
 .project-card:hover {
   border-color: var(--pill-bg-dark);
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(42, 92, 39, 0.07);
+  box-shadow: 0 8px 28px rgba(28, 46, 90, 0.07);
 }
 
 .project-tag {
@@ -521,7 +521,7 @@ nav a.active {
   letter-spacing: 0.1em;
   display: inline-block;
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   padding: 0.2rem 0.65rem;
   border-radius: 99px;
   width: fit-content;
@@ -544,7 +544,7 @@ nav a.active {
 }
 
 .project-card p strong {
-  color: var(--green-dark);
+  color: var(--navy-dark);
   font-weight: 600;
 }
 
@@ -553,13 +553,13 @@ nav a.active {
   margin-top: 0.75rem;
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--green-mid);
+  color: var(--navy-mid);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .case-study-link:hover {
-  color: var(--green-dark);
+  color: var(--navy-dark);
 }
 
 .project-skills {
@@ -575,7 +575,7 @@ nav a.active {
   border-radius: 99px;
   background: var(--bg);
   border: 1px solid var(--border);
-  color: var(--green-muted);
+  color: var(--navy-muted);
 }
 
 /* ── INTERESTS ── */
@@ -606,7 +606,7 @@ nav a.active {
 .interest-card:hover {
   border-color: var(--pill-bg-dark);
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(42, 92, 39, 0.07);
+  box-shadow: 0 8px 28px rgba(28, 46, 90, 0.07);
 }
 
 .interest-icon {
@@ -618,7 +618,7 @@ nav a.active {
   font-family: 'DM Serif Display', serif;
   font-size: 1.15rem;
   font-weight: 400;
-  color: var(--green-dark);
+  color: var(--navy-dark);
 }
 
 .interest-card p {
@@ -655,7 +655,7 @@ nav a.active {
   font-size: 0.72rem;
   font-weight: 500;
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   padding: 0.2rem 0.65rem;
   border-radius: 99px;
   width: fit-content;
@@ -673,7 +673,7 @@ nav a.active {
   font-size: 0.8rem;
   font-weight: 500;
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   padding: 0.3rem 0.85rem;
   border-radius: 99px;
 }
@@ -712,7 +712,7 @@ nav a.active {
 .contact-card:hover {
   border-color: var(--pill-bg-dark);
   background: var(--pill-bg);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   transform: translateX(5px);
 }
 
@@ -756,7 +756,7 @@ footer {
   border-radius: 50%;
   background: var(--surface2);
   border: 1px solid var(--border);
-  color: var(--green-muted);
+  color: var(--navy-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -775,7 +775,7 @@ footer {
 #scroll-top:hover {
   background: var(--pill-bg);
   border-color: var(--pill-bg-dark);
-  color: var(--green-dark);
+  color: var(--navy-dark);
   transform: translateY(-2px);
 }
 
