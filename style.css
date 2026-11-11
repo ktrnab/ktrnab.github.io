@@ -141,7 +141,7 @@ nav a.active {
   font-size: 0.95rem;
   line-height: 1.8;
   font-weight: 300;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
 }
 
 .hero-meta {
@@ -659,23 +659,6 @@ nav a.active {
   padding: 0.2rem 0.65rem;
   border-radius: 99px;
   width: fit-content;
-}
-
-/* Hero interest pills */
-.hero-interests {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-interests span {
-  font-size: 0.8rem;
-  font-weight: 500;
-  background: var(--pill-bg);
-  color: var(--navy-dark);
-  padding: 0.3rem 0.85rem;
-  border-radius: 99px;
 }
 
 /* ── CONTACT ── */
