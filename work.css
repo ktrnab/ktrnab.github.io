@@ -191,6 +191,35 @@ main {
   max-width: 560px;
 }
 
+.zoom {
+  grid-column: 1 / -1;
+  display: block;
+  /* extend across the label column so detailed visuals are readable */
+  margin-left: calc(-140px - 2rem);
+  text-decoration: none;
+  cursor: zoom-in;
+}
+
+.zoom .screen { transition: box-shadow 0.2s, border-color 0.2s; }
+
+.zoom:hover .screen {
+  border-color: var(--pill-bg-dark);
+  box-shadow: 0 6px 24px rgba(28, 46, 90, 0.12);
+}
+
+.zoom:focus-visible {
+  outline: 2px solid var(--navy-mid);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.zoom-hint {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
 /* Contribution list */
 .contribution-list {
   list-style: none;
@@ -309,4 +338,5 @@ footer a:hover { text-decoration: underline; }
   .deliverable-screens { grid-template-columns: 1fr; }
 
   .screen.single { max-width: 100%; }
+  .zoom { margin-left: 0; }
 }
